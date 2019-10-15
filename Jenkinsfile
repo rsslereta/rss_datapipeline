@@ -3,8 +3,26 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                echo 'Building..'
                 sh 'python --version'
-                sh 'echo "Hello World"'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                sh 'python --version'
+            }
+        }
+        stage('Develop') {
+            steps {
+                echo 'Deploying....'
+                sh 'python --version'
+            }
+        }
+        stage('Production') {
+            steps {
+                echo 'Deploying....'
+                sh 'python --version'
             }
         }
     }
