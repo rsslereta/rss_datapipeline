@@ -7,25 +7,35 @@ pipeline {
 	stages {
 		stage('build') {
 			steps {
-				echo 'Building..'
+				echo 'Building...'
 				sh 'python --version'
+			}
+		}
+		stage('Artifactory') {
+			steps {
+				echo 'Deploy to Artifactory...'
+			}
+		}
+		stage('Composer') {
+			steps {
+				echo 'Trigger Composer...'
 			}
 		}
 		stage('Develop') {
 			steps {
 				parallel(
-					Linux: {
-						echo "Test on Linux"
+					Job Queues: {
+						echo "Run job queues..."
 					},
-					Windows: {
-						echo "Test on Windows"
+					Parsers: {
+						echo "Run parsers..."
 					}
 				)
 			}
 		}
 		stage('QA') {
 			steps {
-				echo 'Testing..'
+				echo 'QA Testing...'
 			}
 		}
 		stage('Production') {
