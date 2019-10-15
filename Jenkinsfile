@@ -9,19 +9,19 @@ pipeline {
 			steps {
 				echo 'Building...'
 				sh 'python --version'
-                sh 'sleep 5'
+                sh 'sleep 3'
 			}
 		}
 		stage('Artifactory') {
 			steps {
 				echo 'Deploy to Artifactory...'
-                sh 'sleep 5'
+                sh 'sleep 3'
 			}
 		}
 		stage('Composer') {
 			steps {
 				echo 'Trigger Composer...'
-                sh 'sleep 5'
+                sh 'sleep 3'
 			}
 		}
 		stage('Develop') {
@@ -29,11 +29,11 @@ pipeline {
 				parallel(
 					Job_Queues: {
 						echo "Run job queues..."
-                        sh 'sleep 5'
+                        sh 'sleep 3'
 					},
 					Parsers: {
 						echo "Run parsers..."
-                        sh 'sleep 5'
+                        sh 'sleep 3'
 					}
 				)
 			}
@@ -41,14 +41,13 @@ pipeline {
 		stage('QA') {
 			steps {
 				echo 'QA Testing...'
-                sh 'sleep 5'
+                sh 'sleep 3'
 			}
 		}
 		stage('Production') {
 			steps {
 				echo 'Deploying....'
-				sh 'python --version'
-                sh 'sleep 5'
+                sh 'sleep 3'
 			}
 		}
 	}
