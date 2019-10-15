@@ -24,7 +24,7 @@ pipeline {
 		stage('Develop') {
 			steps {
 				parallel(
-					Job Queues: {
+					Job_Queues: {
 						echo "Run job queues..."
 					},
 					Parsers: {
